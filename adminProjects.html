@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link href="adminProjects.css" rel="stylesheet">
+       <title>Projects</title> 
+       <meta charset="UTF-8">
+    </head>
+    <body>
+        <table>
+            <tr>
+              <th><a href="./adminIndex.html.html">Home</a></th>
+              <th><a href="./adminResume.html">Resume</a></th>
+              <th><a href="./adminProjects.html">Projects</a></th>
+              <th><a href="./adminContact.html">Contact</a></th>
+              <th><a href="./adminSocial.html">Social</a></th>
+              <th><a href="./logout.html">Logout</a></th>
+            </tr>
+        </table>
+
+        <label>My Projects:</label>
+        <textarea id="projects" name="projects"></textarea>
+
+        <input type="button" value="Submit" onclick="submitProjects()">
+
+        <script type="text/javascript">
+            function submitProjects(fName='projects'){
+                var projects = document.getElementById("projects").value;
+			    var data2Blob = new File([projects], fName, {type: "text/plain"});
+			    var blob2URL = window.URL.createObjectURL(data2Blob);
+
+                var anchorTag = document.createElement("a");
+                anchorTag.href = blob2URL;
+			    anchorTag.download = fName;
+			    anchorTag.click();
+            }
+        </script>
+    </body>
+</html>

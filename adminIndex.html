@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link href="adminIndex.css" rel="stylesheet">
+       <title>Home</title> 
+       <meta charset="UTF-8">
+    </head>
+    <body>
+        <table>
+            <tr>
+              <th><a href="./adminIndex.html.html">Home</a></th>
+              <th><a href="./adminResume.html">Resume</a></th>
+              <th><a href="./adminProjects.html">Projects</a></th>
+              <th><a href="./adminContact.html">Contact</a></th>
+              <th><a href="./adminSocial.html">Social</a></th>
+              <th><a href="./logout.html">Logout</a></th>
+            </tr>
+        </table>
+
+        <label>Professional Statement:</label>
+        <textarea id="professional" name="professional"></textarea>
+
+        <label>Brief Biography:</label>
+        <textarea id="bio" name="bio"></textarea>
+
+        <script type="text/javascript">
+            function submitIndex(fName='admin'){
+                var prof = document.getElementById("professional").value;
+                var bio = document.getElementById("bio").value;
+                var lb = '\n';
+			    var data2Blob = new File([prof, lb, bio], fName, {type: "text/plain"});
+			    var blob2URL = window.URL.createObjectURL(data2Blob);
+
+                var anchorTag = document.createElement("a");
+                anchorTag.href = blob2URL;
+			    anchorTag.download = fName;
+			    anchorTag.click();
+            }
+        </script>
+
+        <input type="button" value="Submit" onclick="submitIndex()">
+
+    </body>
+</html>

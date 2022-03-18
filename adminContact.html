@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link href="adminContact.css" rel="stylesheet">
+       <title>Contact</title> 
+       <meta charset="UTF-8">
+    </head>
+    <body>
+        <table>
+            <tr>
+              <th><a href="./adminIndex.html">Home</a></th>
+              <th><a href="./adminResume.html">Resume</a></th>
+              <th><a href="./adminProjects.html">Projects</a></th>
+              <th><a href="./adminContact.html">Contact</a></th>
+              <th><a href="./adminSocial.html">Social</a></th>
+              <th><a href="./logout.html">Logout</a></th>
+            </tr>
+        </table>
+        <table>
+            <tr><td></td></tr>    
+            <tr>   
+                <td colspan="3">
+                    <textarea id="displayWin" cols="100" rows="25"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3"><button onclick="save2File('fileName')" style="width:100% !important;">Click to Save</button></td>
+            </tr>
+            <tr>
+                <td style="text-align:right;">Select a File to Upload:</td>
+                <td><input type="file" id="uploadFile"></td>
+                <td>&nbsp;<td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td><button onclick="readMessages()">Read Messages</button></td>
+                <td>&nbsp;<td>
+            </tr>
+        </table>
+        <script type="text/javascript"> 
+             function save2File(fName='textFile') {
+                 var inData = document.getElementById("displayWin").value;
+                 //var data2Blob = new Blob([inData], {type:"text/plain"});
+                 var data2Blob = new File([inData], fName, {type: "text/plain"});
+                 var blob2URL = window.URL.createObjectURL(data2Blob);
+                 /* Create a HTML anchor tag via JavaScript, and force download */
+                 var anchorTag = document.createElement("a");
+                 anchorTag.href = blob2URL;
+                 anchorTag.download = fName;
+                 anchorTag.click();
+             }
+             function readMessages() {   
+                 var uploadFile = document.getElementById("uploadFile").files[0];
+                 var fileReader = new FileReader();
+                 fileReader.onload = function(fileLoadedEvent) { 
+                     var elemHdl = document.getElementById("displayWin"); 
+                     elemHdl.value = fileLoadedEvent.target.result;
+                 };
+                 fileReader.readAsText(uploadFile, "UTF-8");
+             }
+        </script>
+    </body>
+</html>

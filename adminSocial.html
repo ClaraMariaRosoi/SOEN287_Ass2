@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link href="adminSocial.css" rel="stylesheet">
+       <title>Social</title> 
+       <meta charset="UTF-8">
+    </head>
+    <body>
+        <table>
+            <tr>
+              <th><a href="./adminIndex.html.html">Home</a></th>
+              <th><a href="./adminResume.html">Resume</a></th>
+              <th><a href="./adminProjects.html">Projects</a></th>
+              <th><a href="./adminContact.html">Contact</a></th>
+              <th><a href="./adminSocial.html">Social</a></th>
+              <th><a href="./logout.html">Logout</a></th>
+            </tr>
+        </table>
+
+        <input type="textbox" value="Social Link 1" id = "s1">
+        <input type="textbox" value="Social Link 2" id = "s2">
+        <input type="textbox" value="Social Link 3" id = "s3">
+        <input type="button" value="Submit" onclick="submitSocial()">
+
+        <script type="text/javascript">
+            function submitSocial(fName='social'){
+                var s1 = document.getElementById("s1").value;
+                var s2 = document.getElementById("s2").value;
+                var s3 = document.getElementById("s3").value;
+                var lb = '\n';
+			    var data2Blob = new File([s1, lb, s2, lb, s3], fName, {type: "text/plain"});
+			    var blob2URL = window.URL.createObjectURL(data2Blob);
+
+                var anchorTag = document.createElement("a");
+                anchorTag.href = blob2URL;
+			    anchorTag.download = fName;
+			    anchorTag.click();
+            }
+        </script>
+    </body>
+</html>

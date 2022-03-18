@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link href="logout.css" rel="stylesheet">
+       <title>Logout</title> 
+       <meta charset="UTF-8">
+    </head>
+    <body>
+        <table>
+            <tr>
+              <th><a href="./adminIndex.html">Home</a></th>
+              <th><a href="./adminResume.html">Resume</a></th>
+              <th><a href="./adminProjects.html">Projects</a></th>
+              <th><a href="./adminContact.html">Contact</a></th>
+              <th><a href="./adminSocial.html">Social</a></th>
+              <th><a href="./logout.html">Logout</a></th>
+            </tr>
+        </table>
+
+        <label>Logout</label>
+
+        <input type="submit" value="Logout" onclick="processLogout()">
+
+        <script type="text/javascript">
+            function processLogout(fName='projects'){
+                myStorage = window.sessionStorage;
+                sessionStorage.clear();
+            }
+        </script>
+    </body>
+</html>

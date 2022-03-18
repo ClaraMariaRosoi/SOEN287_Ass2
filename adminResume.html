@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link href="adminResume.css" rel="stylesheet">
+       <title>Resume</title> 
+       <meta charset="UTF-8">
+    </head>
+    <body>
+        <table id="table">
+            <tr>
+              <th><a href="./adminIndex.html">Home</a></th>
+              <th><a href="./adminResume.html">Resume</a></th>
+              <th><a href="./adminProjects.html">Projects</a></th>
+              <th><a href="./adminContact.html">Contact</a></th>
+              <th><a href="./adminSocial.html">Social</a></th>
+              <th><a href="./logout.html">Logout</a></th>
+            </tr>
+        </table>
+
+        <label>Educational Qualifications:</label>
+        <textarea id="education" name="education"></textarea>
+        <label>Skill set:</label>
+        <textarea id="skills" name="skills"></textarea>
+        <label>Awards/Recognition:</label>
+        <textarea id="awards" name="awards"></textarea>
+        <label>Work Experience:</label>
+        <textarea id="work" name="work"></textarea>
+        <label>Referees:</label>
+        <textarea id="referee" name="referee"></textarea>
+
+        <input type="button" value="Submit" onclick="submitResume()">
+
+        <script type="text/javascript">
+            function submitResume(fName='resume'){
+                var edu = document.getElementById("education").value;
+                var skills = document.getElementById("skills").value;
+                var awards = document.getElementById("awards").value;
+                var work = document.getElementById("work").value;
+                var ref = document.getElementById("referee").value;
+                var lb = '\n';
+			    var data2Blob = new File([edu, lb, skills, lb, awards, lb, work, lb, ref], fName, {type: "text/plain"});
+			    var blob2URL = window.URL.createObjectURL(data2Blob);
+
+                var anchorTag = document.createElement("a");
+                anchorTag.href = blob2URL;
+			    anchorTag.download = fName;
+			    anchorTag.click();
+            }
+        </script>
+    </body>
+</html>
